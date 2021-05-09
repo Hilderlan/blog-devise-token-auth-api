@@ -1,4 +1,5 @@
 class Api::V1::ArticlesController < ApplicationController
+  before_action :authenticate_api_user!, except: %i[index]
   before_action :set_article, only: %i[show update destroy]
 
   def index
@@ -12,7 +13,7 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = current_api_user.articles.new(article_params)
 
     if @article.save
       render json: @article, status: :created, location: api_article_url(@article)
@@ -36,7 +37,7 @@ class Api::V1::ArticlesController < ApplicationController
   private
 
   def set_article
-    @article = Article.find(params[:id])
+    @article = current_api_user.articles.find(params[:id])
   end
 
   def article_params
