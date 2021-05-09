@@ -10,6 +10,7 @@ gem 'rails', '~> 5.2.6'
 gem 'rubocop-rails', '~> 2.10'
 
 group :development, :test do
+  gem 'awesome_print', '~> 1.9'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'pry-rails', '~> 0.3.9'
 end
