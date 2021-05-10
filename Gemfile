@@ -15,7 +15,10 @@ gem 'rubocop-rails', '~> 2.10'
 group :development, :test do
   gem 'awesome_print', '~> 1.9'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails', '~> 6.2'
+  gem 'faker', '~> 2.17'
   gem 'pry-rails', '~> 0.3.9'
+  gem 'rspec-rails', '~> 5.0'
 end
 
 group :development do
@@ -23,6 +26,12 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  gem 'database_cleaner-active_record', '~> 2.0'
+  gem 'shoulda-matchers', '~> 4.5'
+  gem 'simplecov', '~> 0.21.2', require: false
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
